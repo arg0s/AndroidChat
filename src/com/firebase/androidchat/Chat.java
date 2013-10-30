@@ -1,10 +1,5 @@
-package com.firebase.androidchat;
+package in.arg0s.nitrochat;
 
-/**
- * User: greg
- * Date: 6/21/13
- * Time: 2:38 PM
- */
 public class Chat {
 
     private String message;

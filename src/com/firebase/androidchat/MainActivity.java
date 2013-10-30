@@ -1,4 +1,4 @@
-package com.firebase.androidchat;
+package in.arg0s.nitrochat;
 
 import android.app.ListActivity;
 import android.content.SharedPreferences;
@@ -8,6 +8,8 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.*;
+import android.accounts.Account;
+import android.accounts.AccountManager;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.ValueEventListener;
@@ -17,7 +19,7 @@ import java.util.Random;
 public class MainActivity extends ListActivity {
 
     // TODO: change this to your own Firebase URL
-    private static final String FIREBASE_URL = "https://android-chat.firebaseIO-demo.com";
+    private static final String FIREBASE_URL = "https://trinitro.firebaseio.com";
 
     private String username;
     private Firebase ref;
@@ -80,9 +82,9 @@ public class MainActivity extends ListActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 boolean connected = (Boolean)dataSnapshot.getValue();
                 if (connected) {
-                    Toast.makeText(MainActivity.this, "Connected to Firebase", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Connected", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(MainActivity.this, "Disconnected from Firebase", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Disconnected", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -101,12 +103,24 @@ public class MainActivity extends ListActivity {
     }
 
     private void setupUsername() {
+
         SharedPreferences prefs = getApplication().getSharedPreferences("ChatPrefs", 0);
         username = prefs.getString("username", null);
-        if (username == null) {
-            Random r = new Random();
-            // Assign a random user name if we don't have one saved.
-            username = "JavaUser" + r.nextInt(100000);
+
+        if (username == null){
+            final AccountManager manager = AccountManager.get(this);
+            final Account[] accounts = manager.getAccountsByType("com.google");
+            final int size = accounts.length;
+            String[] names = new String[size];
+            for (int i = 0; i < size; i++) {
+                names[i] = accounts[i].name;
+            }
+            username = (size>0)?names[0].split("@")[0]:null;
+            if (username == null) {
+                Random r = new Random();
+                username = "NitroDroid" + r.nextInt(100000);
+            }
+            prefs = getApplication().getSharedPreferences("ChatPrefs", 0);
             prefs.edit().putString("username", username).commit();
         }
     }

@@ -1,11 +1,9 @@
-# Firebase Chat Android Application
+# NitroDroid Chat App
 
-This application demonstrates using Firebase to power an Android
-[ListView](https://developer.android.com/guide/topics/ui/layout/listview.html).
-Firebase keeps the list data up to date, you simply need to provide a mapping
-from your own model class to the View used to represent a list item.
-In this case, we implement a simple chat application to demonstrate the functionality.
-Create your own [Firebase](https://www.firebase.com), fork this repo, and incorporate the technique
-into your own application.
+This is a simple app demo I'd put together for NitroDroid 2013 to accompany my [presentation](//slid.es/arg0s/realtime-android-apps) introducing the basic concepts of Firebase to a beginner audience.
 
-Also, check out our [Quickstart guide](https://www.firebase.com/docs/java-quickstart.html) for more information on setting up the Firebase SDK on Android.
+It's a fork of the [Firebase](https://www.firebase.com) chat example with a few tweaks added to add a Goan theme and to grab account user ids for the purposes of the demo.
+
+![NitDroid Chat App](https://s3.amazonaws.com/media-p.slid.es/uploads/arg0s/images/127717/Screenshot_2013-10-23-17-01-49.png)
+
+Feel free to fork and modify as you please. Firebase is awesome, and enjoy building!

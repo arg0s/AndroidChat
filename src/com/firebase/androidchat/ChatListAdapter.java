@@ -1,4 +1,4 @@
-package com.firebase.androidchat;
+package in.arg0s.nitrochat;
 
 import android.app.Activity;
 import android.graphics.Color;
@@ -6,11 +6,6 @@ import android.view.View;
 import android.widget.TextView;
 import com.firebase.client.Query;
 
-/**
- * User: greg
- * Date: 6/21/13
- * Time: 2:39 PM
- */
 
 /**
  * This class is an example of how to use FirebaseListAdapter. It uses the <code>Chat</code> class to encapsulate the

@@ -1,4 +1,4 @@
-package com.firebase.androidchat;
+package in.arg0s.nitrochat;
 
 import android.app.Activity;
 import android.util.Log;
